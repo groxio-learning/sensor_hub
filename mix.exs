@@ -36,8 +36,8 @@ defmodule SensorHub.MixProject do
       {:ring_logger, "~> 0.8.1"},
       {:toolshed, "~> 0.2.13"},
       {:phoenix_pubsub, "~> 2.0"},
-      {:circuits_i2c, git: "https://github.com/batate/circuits_i2c.git", override: true},
-      # {:circuits_i2c, "~> 0.1"},
+      
+      {:circuits_i2c, "~> 0.3.8"},
       {
         :elixir_bme680, 
         git: "https://github.com/fhunleth/elixir_bme680.git", 

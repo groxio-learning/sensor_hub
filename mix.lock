@@ -1,5 +1,5 @@
 %{
-  "circuits_i2c": {:git, "https://github.com/batate/circuits_i2c.git", "c7fbb7739b70970ad705f078aae399418ba0b1f8", []},
+  "circuits_i2c": {:hex, :circuits_i2c, "0.3.8", "fb969ddecdfe621202725ac631a32c1315c86dd9c90e429761a64c2326b113c3", [:make, :mix], [{:elixir_make, "~> 0.6", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm", "396f21f8932ac957eb10b0e84ee5b090a02bcf3b5616d8599a02ce2e72722c63"},
   "dns": {:hex, :dns, "2.2.0", "4721a79c2bccc25481930dffbfd06f40851321c3d679986af307111214bf124c", [:mix], [{:socket, "~> 0.3.13", [hex: :socket, repo: "hexpm", optional: false]}], "hexpm", "13ed1ef36ce896211ec6ce5e02709dbfb12aa61d6255bda8d531577a0a5a56e0"},
   "elixir_bme680": {:git, "https://github.com/fhunleth/elixir_bme680.git", "8519cfed7d547fa101cab0ffc3360dcda72394c6", [ref: "8519cfed7d547fa101cab0ffc3360dcda72394c6"]},
   "elixir_make": {:hex, :elixir_make, "0.6.2", "7dffacd77dec4c37b39af867cedaabb0b59f6a871f89722c25b28fcd4bd70530", [:mix], [], "hexpm", "03e49eadda22526a7e5279d53321d1cced6552f344ba4e03e619063de75348d9"},
