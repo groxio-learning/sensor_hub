@@ -23,7 +23,7 @@ defmodule SensorHub.MixProject do
   def application do
     [
       mod: {SensorHub.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :telemetry]
     ]
   end
 
@@ -36,7 +36,10 @@ defmodule SensorHub.MixProject do
       {:ring_logger, "~> 0.8.1"},
       {:toolshed, "~> 0.2.13"},
       {:phoenix_pubsub, "~> 2.0"},
-      {:circuits_i2c, "~> 0.1"},
+      
+      {:circuits_i2c, "~> 0.3.8"},
+      {:elixir_bme680, git: "https://github.com/lucaong/elixir_bme680"},
+      {:sgp30, "~> 0.2"}, 
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.11.3", targets: @all_targets},
