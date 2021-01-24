@@ -40,6 +40,7 @@ defmodule SensorHub.MixProject do
       {:circuits_i2c, "~> 0.3.8"},
       {:sgp30, "~> 0.2"}, 
       {:bmp280, "~> 0.2"},
+      {:veml6030, path: "../veml6030"}, 
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.11.3", targets: @all_targets},

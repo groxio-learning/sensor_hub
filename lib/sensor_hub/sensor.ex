@@ -1,11 +1,12 @@
 defmodule SensorHub.Sensor do
-  defstruct [:fields, :read, :convert]
+  defstruct [:name, :fields, :read, :convert]
   
   def new(name) do 
     %__MODULE__{
       read: read_fn(name), 
       convert: convert_fn(name),
-      fields: fields(name)
+      fields: fields(name), 
+      name: name
     }
   end
   
