@@ -38,8 +38,8 @@ defmodule SensorHub.MixProject do
       {:phoenix_pubsub, "~> 2.0"},
       
       {:circuits_i2c, "~> 0.3.8"},
-      {:elixir_bme680, git: "https://github.com/lucaong/elixir_bme680"},
       {:sgp30, "~> 0.2"}, 
+      {:bmp280, "~> 0.2"},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.11.3", targets: @all_targets},

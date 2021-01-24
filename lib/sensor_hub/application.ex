@@ -30,7 +30,7 @@ defmodule SensorHub.Application do
     # These are sensors. They will fail on the host so let's start them only on targets.
     [
       {SGP30, []}, 
-      {Bme680, [[i2c_address: 0x77], name: Bme680]}
+      {BMP280, [i2c_address: 0x77, name: BMP280]}
     ]
   end
 
