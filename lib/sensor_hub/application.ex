@@ -1,20 +1,30 @@
 defmodule SensorHub.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
-  @moduledoc false
-
   use Application
+  alias SensorHub.Sensor
 
   def start(_type, _args) do
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
+    System.cmd("epmd", ["-daemon"])
+    [:hostname, host_name] = Application.get_env(:mdns_lite, :host)
+    Node.start(:"hub@#{host_name}.local")
+
     opts = [strategy: :one_for_one, name: SensorHub.Supervisor]
 
     children =
-      [
-      ] ++ children(target())
+      [] ++ children(target())
 
     Supervisor.start_link(children, opts)
+  end
+  
+  defp sensors do
+    [Sensor.new(BMP280), Sensor.new(VEML6030), Sensor.new(SGP30)]
+  end
+  
+  defp broadcaster_pubsub do
+    %{topic: "measurements", server: SensorHub.PubSub}
+  end
+  
+  defp broadcaster do
+    {Broadcaster, %{sensors: sensors(), pubsub: broadcaster_pubsub()}}
   end
 
   # List all child processes to be supervised
@@ -30,7 +40,10 @@ defmodule SensorHub.Application do
     # These are sensors. They will fail on the host so let's start them only on targets.
     [
       {SGP30, []}, 
-      {BMP280, [i2c_address: 0x77, name: BMP280]}
+      {BMP280, [i2c_address: 0x77, name: BMP280]}, 
+      {VEML6030, %{}}, 
+      broadcaster(), 
+      {Phoenix.PubSub.Supervisor, [name: SensorHub.PubSub]}
     ]
   end
 

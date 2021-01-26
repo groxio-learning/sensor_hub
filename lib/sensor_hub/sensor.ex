@@ -12,10 +12,11 @@ defmodule SensorHub.Sensor do
   
   def fields(SGP30), do: [:co2_eq_ppm, :tvoc_ppb]
   def fields(BMP280), do: [:altitude_m, :pressure_pa, :temperature_c]
+  def fields(VEML6030), do: [:light_in_lumens]
   
   def read_fn(SGP30), do: fn -> SGP30.state() end
   def read_fn(BMP280), do: fn -> BMP280.read(BMP280) end
-  def read_fn(module), do: fn -> module.measure() end
+  def read_fn(VEML6030), do: fn -> VEML6030.measure() end
   
   def convert_fn(SGP30) do
     fn reading -> 
@@ -32,7 +33,7 @@ defmodule SensorHub.Sensor do
     end
   end
   def convert_fn(_module) do
-    fn data -> data end
+    fn data -> %{light_in_lumens: data} end
   end
   
   def measure(sensor) do
